@@ -1,0 +1,7 @@
+development:
+  adapter: sqlite3
+  database: db/babies-development.sqlite3
+
+test:
+  adapter: sqlite3
+  database: db/babies-test.sqlite3

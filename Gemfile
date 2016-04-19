@@ -21,7 +21,7 @@ end
 group :test do
   gem 'rspec'
   gem 'rack-test'
-  gem 'pry'
+  # gem 'pry'
   gem 'capybara'
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
 end
