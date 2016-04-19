@@ -6,7 +6,7 @@ module SinatraBabies
       end
 
       get '/' do
-        "Hello, world"
+        "Hello, world! #{ENV["RACK_ENV"]}"
       end
     end
   end
