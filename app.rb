@@ -8,6 +8,7 @@ $: << File.expand_path('../', __FILE__)
 require 'dotenv'
 Dotenv.load
 
+require 'app/models'
 require 'app/controllers'
 
 module SinatraBabies
@@ -22,3 +23,4 @@ module SinatraBabies
   end
 end
 
+include SinatraBabies::Models
