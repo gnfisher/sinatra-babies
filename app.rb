@@ -12,12 +12,12 @@ require 'app/models'
 require 'app/controllers'
 
 module SinatraBabies
-  class App < Sinatra::Application
+  class App < Sinatra::Base
     register Sinatra::ActiveRecordExtension
 
     configure do
       set :database_file, "config/database.yml"
-     end
+    end
 
     use SinatraBabies::Controllers::Base
   end

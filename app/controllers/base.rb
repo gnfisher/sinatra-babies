@@ -1,6 +1,6 @@
 module SinatraBabies
   module Controllers 
-    class Base < Sinatra::Application
+    class Base < Sinatra::Base
       configure do
         set :views, "app/views"
       end
