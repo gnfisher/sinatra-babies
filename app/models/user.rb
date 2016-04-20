@@ -1,5 +1,6 @@
 module SinatraBabies
   module Models
-    autoload :User, 'app/models/user'
+    class User < ActiveRecord::Base
+    end
   end
 end
