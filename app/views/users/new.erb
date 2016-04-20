@@ -6,6 +6,16 @@
 </div>
 
 <div class="row">
+  <% unless flash.empty? %>
+    <div class="col-sm-12">
+      <% flash[:errors].each do |field, msg| %>
+        <p class="alert alert-danger"><%= field %> <%= msg %></p>
+      <% end %>
+    </div>
+  <% end%>
+</div>
+
+<div class="row">
   <div class="col-sm-12">
     <form method="POST" action="/users">
       <div class="form-group">

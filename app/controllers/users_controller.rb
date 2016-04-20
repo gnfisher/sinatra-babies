@@ -11,7 +11,8 @@ module SinatraBabies
         if @user.save
           200
         else
-          500
+          flash[:errors] = @user.errors
+          redirect '/users/new'
         end
       end
 

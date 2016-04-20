@@ -14,9 +14,11 @@ require 'app/controllers'
 module SinatraBabies
   class App < Sinatra::Base
     register Sinatra::ActiveRecordExtension
+    register Sinatra::Flash
 
     configure do
       set :database_file, "config/database.yml"
+      enable :sessions
     end
 
     use Rack::Static, :urls => ['/css', '/js', '/fonts'], :root => 'public'
