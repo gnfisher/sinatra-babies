@@ -6,6 +6,15 @@ module SinatraBabies
         erb :'users/new'
       end
 
+      post '/users' do
+        @user = User.new(params[:user])
+        if @user.save
+          200
+        else
+          500
+        end
+      end
+
     end
   end
 end
