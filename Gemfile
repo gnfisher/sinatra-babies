@@ -5,6 +5,7 @@ gem 'sinatra', require: 'sinatra/base'
 gem 'rake'
 gem 'dotenv'
 gem 'bcrypt', '~> 3.1.2'
+gem 'pry'
 
 # Database
 gem 'activerecord', require: 'active_record'
@@ -14,7 +15,6 @@ gem 'sqlite3'
 group :development do
   gem 'thin'
   gem 'tux'
-  gem 'pry'
   gem 'shotgun'
 end
 
