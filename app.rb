@@ -19,7 +19,7 @@ module SinatraBabies
       set :database_file, "config/database.yml"
     end
 
-    use SinatraBabies::Controllers::Base
+    use SinatraBabies::Controllers::UsersController
   end
 end
 
