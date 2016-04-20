@@ -5,7 +5,7 @@ module SinatraBabies
       
       configure do
         set :views, "app/views"
-        enable :sessions
+        set :erb, escape_html: true
       end
 
       get '/' do
