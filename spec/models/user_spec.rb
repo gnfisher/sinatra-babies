@@ -12,21 +12,23 @@ describe User do
     @user = User.new(email: "test@test.com", username: "tester", password: "password")
   end
 
-  it "is invalid without an email" do
-    @user.email.clear
-    @user.valid?
-    expect(@user.errors[:email].size).to eq(1) 
-  end
-  
-  it "is invalid without a username" do
-    @user.username.clear
-    @user.valid?
-    expect(@user.errors[:username].size).to eq(1)  
-  end
+  context 'invalid user inputs' do
+    it "is invalid without an email" do
+      @user.email.clear
+      @user.valid?
+      expect(@user.errors[:email].size).to eq(1) 
+    end
+    
+    it "is invalid without a username" do
+      @user.username.clear
+      @user.valid?
+      expect(@user.errors[:username].size).to eq(1)  
+    end
 
-  it "is invalid with incorrect password confirmation" do
-    @user.password_confirmation = "notmypassword"
-    @user.valid?
-    expect(@user.errors[:password_confirmation].size).to eq(1)
+    it "is invalid with incorrect password confirmation" do
+      @user.password_confirmation = "notmypassword"
+      @user.valid?
+      expect(@user.errors[:password_confirmation].size).to eq(1)
+    end
   end
 end
