@@ -4,7 +4,7 @@ ruby '2.2.2'
 gem 'sinatra', require: 'sinatra/base'
 gem 'rake'
 gem 'dotenv'
-gem 'bcrypt'
+gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Database
 gem 'activerecord', require: 'active_record'
