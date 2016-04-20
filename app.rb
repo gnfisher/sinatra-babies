@@ -19,6 +19,9 @@ module SinatraBabies
       set :database_file, "config/database.yml"
     end
 
+    use Rack::Static, :urls => ['/css', '/js', '/fonts'], :root => 'public'
+    use Rack::MethodOverride
+
     use SinatraBabies::Controllers::UsersController
   end
 end
