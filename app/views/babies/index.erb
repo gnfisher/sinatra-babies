@@ -1,1 +1,3 @@
-<h1>Your babies here</h1>
+<% @babies.each do |baby| %>
+  <a href="/babies/<%= baby.id %>"><%= baby.name %></a>
+<% end %>

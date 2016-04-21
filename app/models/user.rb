@@ -6,6 +6,8 @@ module SinatraBabies
       validates :username, length: { in: 6..12 }
 
       has_secure_password
+
+      has_many :babies
     end
   end
 end

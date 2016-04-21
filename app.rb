@@ -17,13 +17,20 @@ module SinatraBabies
 
     configure do
       set :database_file, "config/database.yml"
+      set :views, 'app/views'
       enable :sessions
     end
 
     use Rack::Static, :urls => ['/css', '/js', '/fonts'], :root => 'public'
     use Rack::MethodOverride
 
+    use SinatraBabies::Controllers::Base
     use SinatraBabies::Controllers::UsersController
+    use SinatraBabies::Controllers::BabiesController
+
+    not_found do
+      erb :not_found, layout: false
+    end
   end
 end
 
