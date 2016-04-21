@@ -1,0 +1,24 @@
+<div class="header clearfix">
+    <nav class="navbar navbar-default">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Sinatra Babies</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <% if logged_in? %>
+            <li><a href="/babies">My Babies</a></li>
+            <li><a href="/users/logout">Logout</a></li>
+          <% else %>
+            <li><a href="/users/new">Register</a></li>
+            <li><a href="/users/login">Log in</a></li>
+          <% end %>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </nav>
+</div>
