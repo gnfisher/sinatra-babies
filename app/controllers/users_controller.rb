@@ -12,6 +12,7 @@ module SinatraBabies
           200
         else
           flash[:errors] = @user.errors
+          flash[:form_data] = {username: params[:user][:username], email: params[:user][:email]}
           redirect '/users/new'
         end
       end
