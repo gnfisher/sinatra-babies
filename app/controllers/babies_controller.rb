@@ -2,9 +2,9 @@ module SinatraBabies
   module Controllers
     class BabiesController < Base
       
-      before '/babies/*' do
+      before '/babies*' do
         unless logged_in?
-          redirect '/users/login'
+          redirect '/users/login?msg=not-allowed'
         end
       end
 
