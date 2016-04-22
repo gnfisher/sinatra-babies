@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.2'
+raise 'Ruby should be >2.0' unless RUBY_VERSION.to_f > 2.0
 
 gem 'sinatra', require: 'sinatra/base'
 gem 'rake'
