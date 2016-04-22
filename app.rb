@@ -19,6 +19,7 @@ module SinatraBabies
       set :database_file, "config/database.yml"
       set :views, 'app/views'
       enable :sessions
+      set :session_secret, 'temp_secret'
     end
 
     use Rack::Static, :urls => ['/css', '/js', '/fonts'], :root => 'public'
