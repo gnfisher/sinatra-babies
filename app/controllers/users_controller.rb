@@ -9,7 +9,9 @@ module SinatraBabies
       post '/users' do
         @user = User.new(params[:user])
         if @user.save
-          erb :'babies/index'
+          session[:user_id] = @user.id
+
+          redirect '/babies'
         else
           erb :'users/new'
         end
