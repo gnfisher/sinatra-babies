@@ -22,7 +22,7 @@ describe User do
     it "is invalid without a username" do
       @user.username.clear
       @user.valid?
-      expect(@user.errors[:username].size).to eq(1)  
+      expect(@user.errors[:username].size).to eq(2)  
     end
 
     it "is invalid with incorrect password confirmation" do

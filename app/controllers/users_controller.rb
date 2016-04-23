@@ -20,7 +20,7 @@ module SinatraBabies
           redirect '/babies'
         end
         
-        @message = print_message(params[:msg]) if params[:msg]   
+        @message = print_message(params[:msg]) 
         erb :'users/login'
       end
 
@@ -43,13 +43,6 @@ module SinatraBabies
         erb :'users/loggedout'
       end
       
-      def print_message(msg)
-        case msg
-        when 'not-allowed'
-          "Sorry, you have to be logged in to access that resource. Login below or <a href='/users/new'>Register an account</a>."
-        end
-      end
-
     end
   end
 end

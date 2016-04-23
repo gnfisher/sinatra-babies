@@ -10,7 +10,7 @@ module SinatraBabies
       end
 
       def parent_id
-        self.user_id
+        self.user_id.to_i
       end
     end
   end

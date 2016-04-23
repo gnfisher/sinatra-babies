@@ -1,5 +1,19 @@
+<% if @message %>
+  <div class="row">
+    <div class="col-sm-12">
+      <p class="alert alert-success"><%= @message %></p>
+    </div>
+  </div>
+<% end %>
+  
 <div class="row">
   <div class="col-sm-12">
     <h3><%= @baby.name %></h3>
+    <form method="POST" action="/babies/<%= @baby.id %>/delete" onsubmit="return confirm('Do you really want to do this? It is permanent!');">
+      <input type="hidden" name="_method" value="delete">
+      <div class="form-group">
+        <input type="submit" class="form-control btn btn-danger" value="Remove Lucas from Sinatra Babies">
+      </div>
+    </form>
   </div>
 </div>

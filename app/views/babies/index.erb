@@ -1,3 +1,14 @@
-<% @babies.each do |baby| %>
-  <a href="/babies/<%= baby.id %>"><%= baby.name %></a>
-<% end %>
+<div class="row">
+  <div class="col-sm-12">
+    <h3>Your Babies</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <% @babies.each do |baby| %>
+        <h3><a href="/babies/<%= baby.id %>"><%= baby.name %></a></h3>
+      <% end %>
+  <h6><a href="/babies/new">Add a new baby</a></h6>
+  </div>
+</div>

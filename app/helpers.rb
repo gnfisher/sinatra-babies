@@ -11,6 +11,16 @@ module SinatraBabies
           @current_user ||= User.find(session[:user_id])
         end
         
+        def print_message(msg)
+          case msg
+          when 'not-allowed'
+            "Sorry, you have to be logged in to access that resource. Login below or <a href='/users/new'>Register an account</a>."
+          when 'success'
+            "Success!"
+          when nil
+            nil
+          end
+        end
         
         # Form helpers
         
