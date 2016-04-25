@@ -12,7 +12,7 @@
     <form method="POST" action="/babies/<%= @baby.id %>/delete" onsubmit="return confirm('Do you really want to do this? It is permanent!');">
       <input type="hidden" name="_method" value="delete">
       <div class="form-group">
-        <input type="submit" class="form-control btn btn-danger" value="Remove Lucas from Sinatra Babies">
+        <input type="submit" class="form-control btn btn-danger" value="Remove <%= @baby.name %> from Sinatra Babies">
       </div>
     </form>
   </div>
