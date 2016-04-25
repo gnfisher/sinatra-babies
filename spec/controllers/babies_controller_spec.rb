@@ -7,7 +7,6 @@ describe SinatraBabies::Controllers::BabiesController do
     @lucas = Baby.new(name: "Lucas")
     @lucas.user = @daddy
     @lucas.save
-    
   end
 
   it "requires a user be logged into access any babies resource" do

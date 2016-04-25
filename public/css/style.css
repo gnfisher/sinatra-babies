@@ -1,0 +1,16 @@
+.event-form input[type="radio"] { 
+  display:none; 
+}
+
+.event-form label, 
+.event-form input[type="submit"],
+.event-form input[type="time"],
+.big-button {
+  font-size: 1.8em;
+  height:auto;
+}
+
+h3 span {
+  color: #AAA;
+  font-weight: normal;
+}

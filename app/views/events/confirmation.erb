@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-sm-12 text-center">
+    <form class="event-form" method="POST" action="/babies/<%= @baby.id %>/events/new">
+      <input type="hidden" name="event[event_type_id]" value="<%= @event_type.id %>">
+      <input type="hidden" name="event[time]" value="<%= @time %>">
+      <h3><span><%= @baby.name %></span> <%= @event_type.name %></h3>
+      <% if !!@event_description %>
+        <h3><span>and it was</span> <%= @event_description.text %></h3>
+        <input type="hidden" name="event[event_description_id]" value="<%= @event_description.id %>">
+      <% end %>
+      <h3><span>at</span> <%= @time %>?</h3>
+      <div class="form-group">
+        <input class="btn btn-primary form-control" type="submit" value="Yes">
+      </div>
+    </form>
+  </div/>
+</div>

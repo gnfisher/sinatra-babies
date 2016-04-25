@@ -28,6 +28,7 @@ module SinatraBabies
     use SinatraBabies::Controllers::Base
     use SinatraBabies::Controllers::UsersController
     use SinatraBabies::Controllers::BabiesController
+    use SinatraBabies::Controllers::EventsController
 
     not_found do
       erb :not_found, layout: false

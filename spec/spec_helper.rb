@@ -21,6 +21,7 @@ RSpec.configure do |config|
 
   config.before do
     DatabaseCleaner.clean
+    load 'db/seeds.rb'
   end
 
   config.after do

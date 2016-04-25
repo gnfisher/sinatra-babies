@@ -22,6 +22,10 @@ module SinatraBabies
           end
         end
         
+        def format_date
+          "#{Time.now.strftime("%Y-%m-%d")} [#{params[:event][:time]}:00]"
+        end
+
         # Form helpers
         
         def has_error?(obj, field)

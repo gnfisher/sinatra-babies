@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h3>Record an event for <%= @baby.name %></h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <h5 class="text-center">Describe the <%= @event_type.name %></h5>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <form method="POST" action="/babies/<%= @baby.id %>/events/new/step-3" class="event-form">
+      <input type="hidden" name="event[event_type_id]" value="<%= @event_type.id %>">
+      <% EventDescription.all.each do |desc| %>
+        <div class="form-group text-center">
+          <label for="<%= desc.text.gsub(/\s/, '_') %>" class="btn btn-primary form-control"><input id="<%= desc.text.gsub(/\s/, '_') %>" type="radio" name="event[event_description_id]" value="<%= desc.id %>"><%= desc.text.capitalize %></label>
+        </div>
+      <% end %>
+    </form>
+  </div/>
+</div>

@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h3 class="text-center">What did <%= @baby.name.capitalize %> do?</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <form class="event-form" method="POST" action="/babies/<%= @baby.id %>/events/new/step-2">
+      <% EventType.all.each do |event| %>
+        <div class="form-group text-center">
+          <label for="<%= event.name.gsub(/\s/, "_") %>" class="btn btn-primary form-control">
+            <input id="<%= event.name.gsub(/\s/, "_") %>" class="" type="radio" name="event[event_type_id]" value="<%= event.id %>">
+            <%= event.name.capitalize %>
+          </label>
+        </div>
+      <% end %>
+    </form>
+  </div/>
+</div>

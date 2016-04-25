@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-12">
-    <h3>Your Babies</h3>
+    <h3 class="text-center">Your Babies</h3>
   </div>
 </div>
 
@@ -8,11 +8,15 @@
   <div class="col-sm-12">
     <% if @babies %>
       <% @babies.each do |baby| %>
-        <h3><a href="/babies/<%= baby.id %>"><%= baby.name %></a></h3>
+        <p>
+          <a href="/babies/<%= baby.id %>"><button type="button" class="form-control btn btn-primary big-button">Baby <%= baby.name.capitalize %></button></a>
+        </p>
       <% end %>
     <% else %>
       <p>You have no babies registered.</p>
     <% end %>
-  <h6><a href="/babies/new">Add a new baby</a></h6>
+    <p>
+      <a href="/babies/new"><button type="button" class="form-control btn btn-primary big-button">Add a new baby</button></a>
+    </p>
   </div>
 </div>

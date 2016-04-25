@@ -10,6 +10,7 @@ module SinatraBabies
 
       get '/babies' do
         @babies = Baby.get_by_parent_id(current_user.id)
+        @message = print_message(params[:msg])
         erb :'babies/index'
       end
 
