@@ -4,6 +4,7 @@
 
 .event-form label, 
 .event-form input[type="submit"],
+.event-form input[type="date"],
 .event-form input[type="time"],
 .big-button {
   font-size: 1.8em;
@@ -13,4 +14,9 @@
 h3 span {
   color: #AAA;
   font-weight: normal;
+}
+
+.red {
+  color: red;
+  font-weight: bold;
 }

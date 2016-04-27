@@ -1,0 +1,48 @@
+<!-- /babies/:id/events/ -->
+
+<div class="row">
+  <div class="col-sm-12">
+    <h3><%= @baby.name %>'s Latest Events</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 text-right">
+    <%= erb :_prev_button if @prev_button%>
+    <%= erb :_next_button if @next_button%>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <% if @events %>
+    <h3><%= @current_date || "Today" %></h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Event</th>
+          <th>Description</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <% @events.each do |event| %>
+        <tr>
+          <td><%= event.time.strftime("%l:%M %P") %></td>
+          <td><%= "#{@baby.name} #{event.event_type.name}" %></td>
+          <td><%= print_description(event) %></td>
+          <td></td>
+        </tr>
+      <% end %> 
+    </table>
+  <% else %>
+    <p>No results.</p>
+  <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 text-right">
+    <%= erb :_prev_button if @prev_button%>
+    <%= erb :_next_button if @next_button%>
+  </div>
+</div>

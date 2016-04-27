@@ -21,9 +21,20 @@ module SinatraBabies
             nil
           end
         end
-        
+       
+        def print_description(event)
+          if event.event_description
+            case event.event_description.text.downcase
+            when /abnormal/
+              "<span class=\"red\">#{event.event_description.text.capitalize}</span>"
+            else
+              event.event_description.text.capitalize
+            end
+          end
+        end
+
         def format_date
-          "#{Time.now.strftime("%Y-%m-%d")} [#{params[:event][:time]}:00]"
+          "#{params[:event][:date]} [#{params[:event][:time]}:00]"
         end
 
         # Form helpers
