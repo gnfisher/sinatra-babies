@@ -76,4 +76,7 @@ babies/1/events/1 => one day ago
 babies/1/evenst/2 => two days ago
 ...and so on
 
-
+---
+Notes for tomorrow:
+- Write custom validation so that users cant submit two sleeps/wakes in a row
+- Clean up the .hours_slept method! it's insane.
