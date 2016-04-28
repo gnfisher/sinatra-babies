@@ -64,7 +64,7 @@ module SinatraBabies
         if @event.save
           redirect "/babies/#{@baby.id}/events?msg=success"
         else
-          redirect "/babies/#{@baby.id}/events/new?msg=error"
+          erb :'events/step-1'
         end
       end
     end

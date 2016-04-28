@@ -1,4 +1,16 @@
 <div class="row">
+  <% if @event.respond_to? "errors" %>
+    <div class="col-sm-12">
+      <p class="alert bg-danger">Sorry, we couldn't save your event!</p>
+      <h6>Here's why:</h6>
+      <% @event.errors.each do |attr, msg| %>
+        <p><%= attr%>: <%= msg %></p>
+      <% end %>
+    </div>
+  <% end%>
+</div>
+
+<div class="row">
   <div class="col-sm-12">
     <h3 class="text-center">What did <%= @baby.name.capitalize %> do?</h3>
   </div>

@@ -1,4 +1,4 @@
-%w(woke\ up fell\ asleep fed pooped puked other).each do |type|
+%w(woke\ up fell\ asleep fed pooped puked).each do |type|
   EventType.create(name: type)
 end
 
