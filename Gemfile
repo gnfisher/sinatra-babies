@@ -5,6 +5,7 @@ gem 'sinatra', require: 'sinatra/base'
 gem 'rake'
 gem 'dotenv'
 gem 'bcrypt', '~> 3.1.2'
+gem 'chronic'
 gem 'pry'
 
 # Database
