@@ -11,7 +11,7 @@ module SinatraBabies
       end
 
       def self.minutes_slept
-        sleep_wakes q      = self.all_sleep_and_wakes
+        sleep_wakes        = self.all_sleep_and_wakes
         Time.zone          = "UTC"
         Chronic.time_class = Time.zone
         current_day        = sleep_wakes.first[:time].strftime("%Y-%m-%d") 
