@@ -7,6 +7,19 @@
 </div>
 
 <div class="row">
+  <div class="col-sm-12">
+    <h5>Daily Report</h5>
+    <ul>
+      <li><strong><%= @minutes_slept / 60 %></strong> hours <strong><%= @minutes_slept % 60 %></strong> minutes slept</li>
+      <li>X poops (a poop every X hours on average)</li>
+      <li>X feeds (a feed every X hours on average)</li>
+      <li>No abnormal/Abnormal events alert here</li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="row">
   <div class="col-sm-12 text-right">
     <%= erb :_prev_button if @prev_button%>
     <%= erb :_next_button if @next_button%>

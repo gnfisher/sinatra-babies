@@ -37,7 +37,6 @@ module SinatraBabies
         if still_sleeping?(sleep_wakes.last) && Chronic.parse(current_day) == Chronic.parse('noon')
           seconds_slept += current_time - sleep_wakes.last[:time]
         elsif still_sleeping?(sleep_wakes.last)
-          binding.pry
           seconds_slept += end_of_day - sleep_wakes.last[:time]
         end
           

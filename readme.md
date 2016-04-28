@@ -10,8 +10,17 @@ Features
 - Babies have many Events
 - Events have many Types (Sleep, Wake, Feed, Poop, Vomit) (Aren't you excited now???)
 - Events have many Ratings (A lot, Normal, A little, Abnormal)
-- Events have option Notes
-- User can view events and averages of last 24 hours, 72 hours (hours slept, poops, etc)
+- User can view events and see a summary of hours slept, poops, etc for each day
+
+
+Features to come
+---
+- Add user time zone preference (uses server time zone at moment)
+
+
+Bugs
+---
+- On oldest day, counts baby as asleep from midnight of that day (not from first sleep)
 
 
 Goals

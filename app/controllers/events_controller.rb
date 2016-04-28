@@ -11,6 +11,7 @@ module SinatraBabies
 
       get '/babies/:id/events' do
         @events      = @baby.events.days_ago(0)
+        @minutes_slept = @events.minutes_slept
         @next_button = "Yesterday"
         @prev_button = nil
         erb :'events/index'
@@ -24,6 +25,7 @@ module SinatraBabies
       get '/babies/:id/events/:days_ago' do
         @events = @baby.events.days_ago(params[:days_ago].to_i)
         unless @events.empty?
+          @minutes_slept = @events.minutes_slept
           date = @events.first.time.to_date
           @current_date = date.strftime("%B %-d")
           @next_button = "Go to #{(date - 1).strftime("%B %-d")}" unless @baby.events.days_ago(params[:days_ago].to_i + 1).empty?
