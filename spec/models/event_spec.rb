@@ -47,14 +47,12 @@ describe Event do
 
   context 'Event.hours_slept' do
     it 'should accurately count hours slept since midnight' do
-      result1 = Baby.find(1).events.days_ago(0).hours_slept
-      result2 = Baby.find(1).events.days_ago(1).hours_slept
+      result1 = Baby.find(1).events.days_ago(0).minutes_slept
+      result2 = Baby.find(1).events.days_ago(1).minutes_slept
       puts result1
       puts result2
-      expect(result1[:hours]).to eq("8")
-      expect(result1[:still_sleeping]).to be false
-      expect(result2[:hours]).to eq("16")
-      expect(result2[:still_sleeping]).to be true
+      expect(result1).to eq(530)
+      expect(result2).to eq(970)
     end
   end
 end
