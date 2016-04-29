@@ -33,16 +33,16 @@
 </div>
 
 <div class="row">
-  <div class="col-sm-12">
-    <% if @events %>
+
+  <% if @events %>
     <h3><%= @current_date || "Today" %></h3>
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Time</th>
-          <th>Event</th>
-          <th>Description</th>
-          <th>Options</th>
+          <th class="col-sm-3">Time</th>
+          <th class="col-sm-3">Event</th>
+          <th class="col-sm-2">Description</th>
+          <th class="col-sm-4">Options</th>
         </tr>
       </thead>
       <% @events.each do |event| %>
@@ -65,7 +65,7 @@
   <% else %>
     <p>No results.</p>
   <% end %>
-  </div>
+
 </div>
 <div class="row">
   <div class="col-sm-12 text-right">

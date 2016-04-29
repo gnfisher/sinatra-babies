@@ -2,7 +2,7 @@
   display:none; 
 }
 
-/*.event-form label, */ 
+.event-form label.btn, 
 .event-form input[type="submit"],
 .event-form input[type="date"],
 .event-form input[type="time"],
