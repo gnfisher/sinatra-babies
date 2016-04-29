@@ -22,7 +22,6 @@ module SinatraBabies
           redirect '/babies'
         end
         
-        @message = print_message(params[:msg]) 
         erb :'users/login'
       end
 

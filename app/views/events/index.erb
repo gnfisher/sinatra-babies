@@ -1,12 +1,4 @@
 <!-- /babies/:id/events/ -->
-<% if @message %>
-  <div class="row">
-    <div class="col-sm-12">
-      <p class="alert alert-success"><%= @message %></p>
-    </div>
-  </div>
-<% end %>
-
 <div class="row">
   <div class="col-sm-12">
     <h3><%= @baby.name %>'s Latest Events</h3>
@@ -33,7 +25,7 @@
 </div>
 
 <div class="row">
-
+  <div class="col-sm-12">
   <% if @events %>
     <h3><%= @current_date || "Today" %></h3>
     <table class="table table-striped">
@@ -65,7 +57,7 @@
   <% else %>
     <p>No results.</p>
   <% end %>
-
+  </div>
 </div>
 <div class="row">
   <div class="col-sm-12 text-right">

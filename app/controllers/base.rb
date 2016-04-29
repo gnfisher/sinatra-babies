@@ -7,11 +7,18 @@ module SinatraBabies
         set :erb, escape_html: true
       end
 
+      before do
+        if params[:msg]
+          set_alert_message(params[:msg])
+        end
+      end
+
       helpers Helpers
 
       get '/' do
         "Hello, world! #{ENV["RACK_ENV"]}"
       end
+
     end
   end
 end

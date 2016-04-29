@@ -10,18 +10,18 @@ module SinatraBabies
         def current_user
           @current_user ||= User.find(session[:user_id])
         end
-        
-        def print_message(msg)
+       
+        def set_alert_message(msg)
           case msg
           when 'not-allowed'
-            "Sorry, you have to be logged in to access that resource. Login below or <a href='/users/new'>Register an account</a>."
+            @message = {type: "warning", text: "Sorry, you're not allowed to access that."}
           when 'success'
-            "Success!"
-          when nil
-            nil
+            @message = {type: "success", text: "Success! We did it!"}
+          else
+            @message = nil
           end
         end
-       
+
         def print_description(event)
           if event.event_description
             case event.event_description.text.downcase
