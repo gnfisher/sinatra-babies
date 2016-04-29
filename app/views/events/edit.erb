@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h3>Edit <%= @baby.name %>'s event</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <form class="event-form" method="POST" action="/babies/<%= @baby.id %>/events/<%= @event.id %>">
+      <input type="hidden" name="_method" value="patch">
+      <div class="form-group">
+        <label class="control-label">Event type</label>
+        <select class="form-control" name="event[event_type_id]">
+          <% EventType.all.each do |event_type| %>
+            <option <%= "selected='selected'" if event_type.id == @event.event_type_id %> value="<%= event_type.id %>"><%= event_type.name.capitalize %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Event description</label>
+        <select class="form-control" name="event[event_description_id]">
+            <option value="">&nbsp;</option>
+          <% EventDescription.all.each do |event_desc| %>
+            <option <%= "selected='selected'" if event_desc.id == @event.event_description_id %> value="<%= event_desc.id %>"><%= event_desc.text.capitalize %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="time" name="event[time]" value="<%= @event.time.strftime("%H:%M") %>">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="date" name="event[date]" value="<%= @event.time.strftime("%Y-%m-%d") %>">
+      </div>
+      <div class="form-group">
+        <input class="btn btn-primary form-control" type="submit" value="Update">
+      </div>
+    </form>
+  </div>
+</div>

@@ -2,14 +2,19 @@
   display:none; 
 }
 
-.event-form label, 
+/*.event-form label, */ 
 .event-form input[type="submit"],
 .event-form input[type="date"],
 .event-form input[type="time"],
+.event-form select,
 .big-button {
   font-size: 1.8em;
   height:auto;
 }
+
+.event-form select {
+  height: 50px;
+`}
 
 h3 span {
   color: #AAA;

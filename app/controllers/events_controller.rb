@@ -69,6 +69,37 @@ module SinatraBabies
           erb :'events/step-1'
         end
       end
+
+      get '/babies/:id/events/:event_id/edit' do
+        @event = Event.find(params[:event_id])
+        if @event
+          erb :'events/edit'
+        else
+          erb :'not_found'
+        end
+      end
+
+      patch '/babies/:id/events/:event_id' do
+        @event = Event.find(params[:event_id])
+        @event.time = "#{params["event"].delete("date")} #{params["event"].delete("time")}:00"
+        params["event"].delete("event_description_id") if params[:event][:event_description_id].empty?
+        @event.update(params[:event])
+        
+        if @event.save
+          redirect "/babies/#{@baby.id}/events?msg=success"
+        else
+          erb :"events/edit"
+        end
+      end
+
+      delete '/babies/:id/events/:event_id' do
+        if @event = Event.find(params[:event_id])
+          @event.delete
+          redirect "/babies/#{@baby.id}/events?msg=success"
+        else
+          erb :'not_found'
+        end
+      end
     end
   end
 end

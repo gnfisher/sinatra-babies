@@ -21,13 +21,6 @@
   <body>
     <%= erb :'_header' %>
     <div class="container-fluid">
-      <% if @message %>
-        <div class="row">
-          <div class="col-sm-12">
-            <p class="alert alert-success"><%= @message %></p>
-          </div>
-        </div>
-      <% end %>
       <%= yield %>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

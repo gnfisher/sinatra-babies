@@ -1,4 +1,11 @@
 <!-- /babies/:id/events/ -->
+<% if @message %>
+  <div class="row">
+    <div class="col-sm-12">
+      <p class="alert alert-success"><%= @message %></p>
+    </div>
+  </div>
+<% end %>
 
 <div class="row">
   <div class="col-sm-12">
@@ -18,7 +25,6 @@
   </div>
 </div>
 
-
 <div class="row">
   <div class="col-sm-12 text-right">
     <%= erb :_prev_button if @prev_button%>
@@ -36,7 +42,7 @@
           <th>Time</th>
           <th>Event</th>
           <th>Description</th>
-          <th>Notes</th>
+          <th>Options</th>
         </tr>
       </thead>
       <% @events.each do |event| %>
@@ -44,7 +50,15 @@
           <td><%= event.time.strftime("%l:%M %P") %></td>
           <td><%= "#{@baby.name} #{event.event_type.name}" %></td>
           <td><%= print_description(event) %></td>
-          <td></td>
+          <td>
+            <div class="btn-group">
+              <form class="form-inline" method="POST" action="/babies/<%= @baby.id %>/events/<%= event.id %>">
+                <a href="/babies/<%= @baby.id %>/events/<%= event.id %>/edit"><button type="button" class="btn btn-default">Update</button></a>
+                <input type="hidden" name="_method" value="delete">
+                <input class="btn btn-danger" type="submit" value="Delete">
+              </form>
+            </div>
+          </td>
         </tr>
       <% end %> 
     </table>
@@ -57,5 +71,11 @@
   <div class="col-sm-12 text-right">
     <%= erb :_prev_button if @prev_button%>
     <%= erb :_next_button if @next_button%>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    <a href="/babies/<%= @baby.id %>/events/new"><button class="btn btn-primary form-control big-button">Add new event</button</a>
   </div>
 </div>
