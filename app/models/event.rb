@@ -21,11 +21,16 @@ module SinatraBabies
       #end
 
       def self.days_ago(days)
-        self.where('DATE(time) = ?', (Date.today - days)).order('time desc')
+        #self.where('DATE(time) = ?', (Date.today - days)).order('time desc')
+        self.where('time between :start and :end',
+                   start: Chronic.parse('0 in the morning') - (days * 86400),
+                   end:   Chronic.parse('midnight') - (days * 86400)
+                  ).
+            order('time desc')
       end
 
       def self.minutes_slept
-        if self.all.empty?
+        if self.all.empty? || self.all_sleep_and_wakes.empty?
           return 0
         end
         

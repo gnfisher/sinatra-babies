@@ -11,8 +11,11 @@ module SinatraBabies
 
       get '/babies/:id/events' do
         @events      = @baby.events.days_ago(0)
+        @events.each do |event|
+          event.time = event.time.in_time_zone("Santiago") # hardwired timezone!
+        end
         @minutes_slept = @events.minutes_slept
-        @next_button = "Yesterday"
+        @next_button = "Yesterday" # make this toggle to nil if no more results
         @prev_button = nil
         erb :'events/index'
       end
@@ -25,6 +28,9 @@ module SinatraBabies
       get '/babies/:id/events/:days_ago' do
         @events = @baby.events.days_ago(params[:days_ago].to_i)
         unless @events.empty?
+          @events.each do |event|
+            event.time = event.time.in_time_zone("Santiago") # hardwired timezone!
+          end
           @minutes_slept = @events.minutes_slept
           date = @events.first.time.to_date
           @current_date = date.strftime("%B %-d")
@@ -32,6 +38,7 @@ module SinatraBabies
           @prev_button = "Back to #{(date + 1).strftime("%B %-d")}"
         else
           @events = nil
+          @minutes_slept = nil
         end
         erb :'events/index'
       end
@@ -74,6 +81,7 @@ module SinatraBabies
 
       get '/babies/:id/events/:event_id/edit' do
         @event = Event.find(params[:event_id])
+        @event.time = @event.time.in_time_zone("Santiago")
         if @event
           erb :'events/edit'
         else

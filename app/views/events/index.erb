@@ -9,7 +9,9 @@
   <div class="col-sm-12">
     <h5>Daily Report</h5>
     <ul>
-      <li><strong><%= @minutes_slept / 60 %></strong> hours <strong><%= @minutes_slept % 60 %></strong> minutes slept</li>
+      <% if @minutes_slept %>
+        <li><strong><%= @minutes_slept / 60 %></strong> hours <strong><%= @minutes_slept % 60 %></strong> minutes slept</li>
+      <% end %>
       <li>X poops (a poop every X hours on average)</li>
       <li>X feeds (a feed every X hours on average)</li>
       <li>No abnormal/Abnormal events alert here</li>
@@ -39,7 +41,7 @@
       </thead>
       <% @events.each do |event| %>
         <tr>
-          <td><%= event.time.strftime("%l:%M %P") %></td>
+          <td><%= event.time.strftime("%l:%M %P %z") %></td>
           <td><%= "#{@baby.name} #{event.event_type.name}" %></td>
           <td><%= print_description(event) %></td>
           <td>
