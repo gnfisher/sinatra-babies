@@ -11,6 +11,7 @@ Dotenv.load
 
 require 'app/models'
 require 'app/controllers'
+require 'fix/timezone'
 
 module SinatraBabies
   class App < Sinatra::Base
@@ -21,6 +22,10 @@ module SinatraBabies
       set :views, 'app/views'
       enable :sessions
       set :session_secret, 'temp_secret'
+
+      Time.zone = "UTC"
+      ActiveRecord::Base.default_timezone = :utc
+
     end
 
     use Rack::Static, :urls => ['/css', '/js', '/fonts'], :root => 'public'

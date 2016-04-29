@@ -61,8 +61,10 @@ module SinatraBabies
       end
 
       post '/babies/:id/events/new' do
+        #binding.pry
         @event = Event.new(params[:event])
         @event.baby = @baby
+        @event.time = Chronic.parse(params[:event][:time])
         if @event.save
           redirect "/babies/#{@baby.id}/events?msg=success"
         else
@@ -81,7 +83,7 @@ module SinatraBabies
 
       patch '/babies/:id/events/:event_id' do
         @event = Event.find(params[:event_id])
-        @event.time = "#{params["event"].delete("date")} #{params["event"].delete("time")}:00"
+        @event.time = Chronic.parse("#{params["event"].delete("date")} #{params["event"].delete("time")}:00 -0300")
         params["event"].delete("event_description_id") if params[:event][:event_description_id].empty?
         @event.update(params[:event])
         
