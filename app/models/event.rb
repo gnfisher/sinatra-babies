@@ -49,9 +49,9 @@ module SinatraBabies
             memo != nil ? memo : memo = event[:time]
           else
             if memo != nil
-              seconds      = event[:time] - memo
+              seconds        = event[:time] - memo
               seconds_slept += seconds
-              memo         = nil
+              memo           = nil
             else
               memo
             end
