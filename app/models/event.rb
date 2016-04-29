@@ -25,6 +25,10 @@ module SinatraBabies
       end
 
       def self.minutes_slept
+        if self.all.empty?
+          return 0
+        end
+        
         sleep_wakes        = self.all_sleep_and_wakes
         Time.zone          = "UTC"
         Chronic.time_class = Time.zone
