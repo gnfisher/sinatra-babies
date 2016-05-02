@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425133152) do
+ActiveRecord::Schema.define(version: 20160502163206) do
 
   create_table "babies", force: :cascade do |t|
     t.string  "name"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20160425133152) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.string "timezone",        default: "Santiago"
   end
 
 end

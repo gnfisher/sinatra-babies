@@ -30,6 +30,16 @@
         <% end %>
 
       </div>
+      
+      <div class="form-group <%= has_error? @user, :timezone %>">
+        <label class="control-label">Timezone</label>
+        <select class="form-control" name="user[timezone]">
+          <% User.timezones.each do |tz| %>
+            <option><%= tz.upcase %></option>
+          <% end %>
+        </select>
+      </div>
+
       <div class="form-group <%= has_error? @user, :password %>">
         <label class="control-label">Password</label>
         <input class="form-control" type="password" name="user[password]">

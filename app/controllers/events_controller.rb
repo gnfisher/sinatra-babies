@@ -7,12 +7,14 @@ module SinatraBabies
         unless logged_in? && @baby && @baby.parent_id == current_user.id
           redirect '/users/login?msg=not-allowed'
         end
+        #Time.zone= current_user.timezone
+        #Chronic.time_class = Time.zone
       end
 
       get '/babies/:id/events' do
         @events      = @baby.events.days_ago(0)
         @events.each do |event|
-          event.time = event.time.in_time_zone("Santiago") # hardwired timezone!
+          event.time = event.time.in_time_zone(current_user.timezone)
         end
         @minutes_slept = @events.minutes_slept
         @next_button = "Yesterday" # make this toggle to nil if no more results
@@ -68,7 +70,7 @@ module SinatraBabies
       end
 
       post '/babies/:id/events/new' do
-        #binding.pry
+        binding.pry
         @event = Event.new(params[:event])
         @event.baby = @baby
         @event.time = Chronic.parse(params[:event][:time])

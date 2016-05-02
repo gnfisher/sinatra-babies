@@ -11,6 +11,10 @@ module SinatraBabies
         if params[:msg]
           set_alert_message(params[:msg])
         end
+
+        if logged_in?
+          set_time_zone
+        end
       end
 
       helpers Helpers
