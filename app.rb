@@ -23,7 +23,6 @@ module SinatraBabies
       enable :sessions
       set :session_secret, 'temp_secret'
 
-      Time.zone = "UTC"
       ActiveRecord::Base.default_timezone = :utc
 
     end

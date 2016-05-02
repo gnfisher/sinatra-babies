@@ -29,10 +29,11 @@ module SinatraBabies
       end
 
       def self.minutes_slept
-        if self.all.empty? || self.all_sleep_and_wakes.empty?
+        if self.all_sleep_and_wakes.empty?
           return 0
         end
        
+        binding.pry
         
         sleep_wakes        = self.all_sleep_and_wakes
         current_day        = sleep_wakes.first[:time].strftime("%Y-%m-%d")
@@ -41,13 +42,23 @@ module SinatraBabies
         end_of_day         = Chronic.parse("#{current_day} 00:00:00") + 86400
         seconds_slept      = 0
         
+        # If latest sleep/wake event was a sleep AND the current day is today
         if still_sleeping?(sleep_wakes.last) && Chronic.parse(current_day) == Chronic.parse('noon')
           seconds_slept += current_time - sleep_wakes.last[:time]
         elsif still_sleeping?(sleep_wakes.last)
           seconds_slept += end_of_day - sleep_wakes.last[:time]
         end
+        
+        # If oldest sleep/wake event is the same as the oldest sleep/wake event 
+        # of ALL sleep/wake events for this baby, start counter at time of that event
+        # else start counting from beginning_of_day
+        if sleep_wakes.first == all_sleep_and_wakes.first
+          seconds_counter = sleep_wakes.first.time
+        else
+          seconds_counter = beginning_of_day
+        end
           
-        sleep_wakes.reduce(beginning_of_day) do |memo, event|
+        sleep_wakes.reduce(seconds_counter) do |memo, event|
           if event[:event_type_id] == 2
             memo != nil ? memo : memo = event[:time]
           else
@@ -64,6 +75,7 @@ module SinatraBabies
       end
 
       def self.all_sleep_and_wakes
+        # Reversed so that array starts with the OLDEST event first
         self.where(event_type_id: 1..2).reverse
       end
 

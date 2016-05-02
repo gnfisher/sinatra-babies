@@ -2,7 +2,7 @@
   <div class="col-sm-12 text-center">
     <form class="event-form" method="POST" action="/babies/<%= @baby.id %>/events/new">
       <input type="hidden" name="event[event_type_id]" value="<%= @event_type.id %>">
-      <input type="hidden" name="event[time]" value="<%= "#{@date} #{@time}:00 -0300" %>">
+      <input type="hidden" name="event[time]" value="<%= "#{@date} #{@time}:00" %>">
       <h3><span><%= @baby.name %></span> <%= @event_type.name %></h3>
       <% if !!@event_description %>
         <h3><span>and it was</span> <%= @event_description.text %></h3>
