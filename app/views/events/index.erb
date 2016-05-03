@@ -1,35 +1,31 @@
 <!-- /babies/:id/events/ -->
 <div class="row">
-  <div class="col-sm-12">
-    <h3><%= @baby.name %>'s Latest Events</h3>
+  <div class="col-sm-12 text-center">
+    <h1><%= @current_date || "Today" %></h1>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-sm-12">
-    <h5>Daily Report</h5>
-    <ul>
-      <% if @minutes_slept %>
-        <li><strong><%= @minutes_slept / 60 %></strong> hours <strong><%= @minutes_slept % 60 %></strong> minutes slept</li>
-      <% end %>
-      <li>X poops (a poop every X hours on average)</li>
-      <li>X feeds (a feed every X hours on average)</li>
-      <li>No abnormal/Abnormal events alert here</li>
-    </ul>
+  <div class="col-sm-4 text-center">
+    <% if @minutes_slept %>
+      <h4>Time Slept</h4>
+      <h1><%= @minutes_slept / 60 %> <small>hours</small> <%= @minutes_slept % 60 %> <small>minutes</small></h1>
+    <% end %>
+  </div>
+  <div class="col-sm-4 text-center">
+    <h4>Poops<h4>
+    <h1><%= @poops %></h1>
+  </div>
+  <div class="col-sm-4 text-center">
+    <h4 class="<%= "red" if @abnormals > 0 %>">Abnormalities</h4>
+    <h1 class="<%= "red" if @abnormals > 0 %>"><%= @abnormals %></h1>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-sm-12 text-right">
-    <%= erb :_prev_button if @prev_button%>
-    <%= erb :_next_button if @next_button%>
-  </div>
-</div>
 
 <div class="row">
   <div class="col-sm-12">
   <% if @events %>
-    <h3><%= @current_date || "Today" %></h3>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -62,7 +58,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-12 text-right">
+  <div class="col-sm-12 text-center">
     <%= erb :_prev_button if @prev_button%>
     <%= erb :_next_button if @next_button%>
   </div>

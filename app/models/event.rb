@@ -83,6 +83,14 @@ module SinatraBabies
       def self.still_sleeping?(last_event)
         last_event[:event_type_id] == 2 ? true : false
       end
+      
+      def self.poops
+        self.where(event_type_id: 4).count
+      end
+
+      def self.abnormals
+        self.where(event_description_id: 4).count
+      end
     end
   end
 end

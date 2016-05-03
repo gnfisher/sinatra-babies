@@ -17,6 +17,8 @@ module SinatraBabies
           event.time = event.time.in_time_zone(current_user.timezone)
         end
         @minutes_slept = @events.minutes_slept
+        @poops = @events.poops
+        @abnormals = @events.abnormals
         @next_button = "Yesterday" # make this toggle to nil if no more results
         @prev_button = nil
         erb :'events/index'
@@ -35,6 +37,8 @@ module SinatraBabies
           end
           @minutes_slept = @events.minutes_slept
           date = @events.first.time.to_date
+          @poops = @events.poops
+          @abnormals = @events.abnormals
           @current_date = date.strftime("%B %-d")
           @next_button = "Go to #{(date - 1).strftime("%B %-d")}" unless @baby.events.days_ago(params[:days_ago].to_i + 1).empty?
           @prev_button = "Back to #{(date + 1).strftime("%B %-d")}"
