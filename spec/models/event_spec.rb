@@ -49,10 +49,8 @@ describe Event do
     it 'should accurately count hours slept since midnight' do
       result1 = Baby.find(1).events.days_ago(0).minutes_slept
       result2 = Baby.find(1).events.days_ago(1).minutes_slept
-      puts result1
-      puts result2
-      expect(result1).to eq(530)
-      expect(result2).to eq(970)
+      expect(result1).to eq(479)
+      expect(result2).to eq(719)
     end
   end
 end

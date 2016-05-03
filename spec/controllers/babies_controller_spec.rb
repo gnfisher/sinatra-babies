@@ -12,7 +12,7 @@ describe SinatraBabies::Controllers::BabiesController do
   it "requires a user be logged into access any babies resource" do
     get '/babies', {}, {'rack.session' => {user_id: nil}}
     follow_redirect!
-    expect(last_response.body).to include('have to be logged in')
+    expect(last_response.body).to include('not allowed')
   end
 
   it "only lets a parent view their own babies" do
@@ -35,7 +35,7 @@ describe SinatraBabies::Controllers::BabiesController do
       click_link "Add a new baby"
       fill_in :name, with: "Girl baby"
       click_button "Add My Baby"
-      expect(Baby.all.count).to eq(2)
+      expect(Baby.all.count).to eq(3)
       expect(page.body).to include("Success!")
     end
 
@@ -63,11 +63,11 @@ describe SinatraBabies::Controllers::BabiesController do
       fill_in "password", with: "password"
       click_button "Login"
       click_link "Lucas"
-      click_button "Remove Lucas from Sinatra Babies"
+      click_button "Delete Lucas"
       page.driver.browser.switch_to.alert.accept
       page.driver.browser.switch_to.window(main)
       
-      expect(Baby.all.count).to eq(0)
+      expect(Baby.all.count).to eq(1)
       expect(page.body).to include('Add a new baby')
       
       Capybara.use_default_driver

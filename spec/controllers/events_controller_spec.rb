@@ -13,7 +13,7 @@ describe SinatraBabies::Controllers::EventsController do
     it "redirects guests to the login page with a message" do
       get '/babies/1/events', {}, {'rack.session' => {user_id: nil}}
       follow_redirect!
-      expect(last_response.body).to include('have to be logged in')
+      expect(last_response.body).to include('not allowed')
     end
   end
 
@@ -32,7 +32,7 @@ describe SinatraBabies::Controllers::EventsController do
       expect(page.body).to include("pooped")
       expect(page.body).to include("a lot")
       click_button "Yes"
-      expect(Event.all.count).to eq(1)
+      expect(Event.all.count).to eq(101)
       expect(@lucas.events.all.count).to eq(1)
       Capybara.use_default_driver
     end
@@ -50,7 +50,7 @@ describe SinatraBabies::Controllers::EventsController do
       click_button "Next"
       expect(page.body).to include("woke up")
       click_button "Yes"
-      expect(Event.all.count).to eq(1)
+      expect(Event.all.count).to eq(101)
       expect(@lucas.events.all.count).to eq(1)
       Capybara.use_default_driver
   end

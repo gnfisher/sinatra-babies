@@ -70,11 +70,9 @@ module SinatraBabies
       end
 
       post '/babies/:id/events/new' do
-        binding.pry
         @event = Event.new(params[:event])
         @event.baby = @baby
         @event.time = Chronic.parse(params[:event][:time])
-        binding.pry
         if @event.save
           redirect "/babies/#{@baby.id}/events?msg=success"
         else
