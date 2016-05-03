@@ -19,7 +19,7 @@ module SinatraBabies
         @minutes_slept = @events.minutes_slept
         @poops = @events.poops
         @abnormals = @events.abnormals
-        @next_button = "Yesterday" # make this toggle to nil if no more results
+        @next_button = @baby.events.days_ago(params[:days_ago].to_i + 1).empty? ? nil : "Yesterday" # make this toggle to nil if no more results
         @prev_button = nil
         erb :'events/index'
       end
