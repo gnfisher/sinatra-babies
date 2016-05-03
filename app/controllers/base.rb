@@ -20,7 +20,11 @@ module SinatraBabies
       helpers Helpers
 
       get '/' do
-        "Hello, world! #{ENV["RACK_ENV"]}"
+        if logged_in?
+          redirect '/babies'
+        else
+          erb :index
+        end
       end
 
     end

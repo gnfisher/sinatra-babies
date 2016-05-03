@@ -2,11 +2,14 @@
   display:none; 
 }
 
-.event-form label.btn, 
-.event-form input[type="submit"],
-.event-form input[type="date"],
-.event-form input[type="time"],
-.event-form select,
+.form-group input[type="submit"],
+.form-group input[type="password"],
+.form-group label.btn, 
+.form-group input[type="submit"],
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group select,
 .big-button {
   font-size: 1.8em;
   height:auto;
@@ -24,4 +27,15 @@ h3 span {
 .red {
   color: red;
   font-weight: bold;
+}
+
+.footer {
+  font-size: 0.85em;
+  padding: 20px 0 20px 0;
+  margin: 20px 0 0;
+  color: #555;
+}
+
+.footer a {
+  color: #555
 }
