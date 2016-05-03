@@ -35,7 +35,7 @@
         <label class="control-label">Timezone</label>
         <select class="form-control" name="user[timezone]">
           <% User.timezones.each do |tz| %>
-            <option><%= tz.upcase %></option>
+            <option><%= tz %></option>
           <% end %>
         </select>
       </div>
