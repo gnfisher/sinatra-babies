@@ -4,6 +4,8 @@ module SinatraBabies
       validates_presence_of :username, :email
       validates :password, length: { minimum: 8 }, allow_nil: true
       validates :username, length: { in: 6..12 }
+      validates_uniqueness_of :email
+      validates_uniqueness_of :username
 
       has_secure_password
 
