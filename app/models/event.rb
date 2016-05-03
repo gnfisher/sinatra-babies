@@ -6,7 +6,7 @@ module SinatraBabies
       belongs_to :event_description
 
       validates :baby, presence: true
-      #validate  :no_consecutive_sleeps_or_wakes
+      #validate :no_consecutive_sleeps_or_wakes
 
       #def no_consecutive_sleeps_or_wakes
       #  baby = Baby.find(baby_id)
@@ -33,8 +33,6 @@ module SinatraBabies
           return 0
         end
        
-        binding.pry
-        
         sleep_wakes        = self.all_sleep_and_wakes
         current_day        = sleep_wakes.first[:time].strftime("%Y-%m-%d")
         current_time       = Chronic.parse("this second")
@@ -58,6 +56,9 @@ module SinatraBabies
           seconds_counter = beginning_of_day
         end
           
+        # Total time between sleep and wakes, ignoring when sleeps follow sleeps
+        # or wakes follow wakes
+        # TODO: when sleeps follow sleeps, the first sleep gets ignore and it shouldnt
         sleep_wakes.reduce(seconds_counter) do |memo, event|
           if event[:event_type_id] == 2
             memo != nil ? memo : memo = event[:time]

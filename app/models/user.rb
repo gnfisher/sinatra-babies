@@ -1,7 +1,7 @@
 module SinatraBabies
   module Models
     class User < ActiveRecord::Base
-      validates_presence_of :username, :email
+      validates_presence_of :username, :email 
       validates :password, length: { minimum: 8 }, allow_nil: true
       validates :username, length: { in: 6..12 }
       validates_uniqueness_of :email

@@ -35,6 +35,16 @@ module SinatraBabies
         end
       end
 
+      get '/users/edit' do
+        erb :'users/edit'
+      end
+
+      patch '/users/edit' do
+        user = @current_user
+        user.update_column(:timezone, params[:user][:timezone])
+        redirect '/users/edit'
+      end
+
       get '/users/login-failed' do
         erb :'users/login_failed'
       end
