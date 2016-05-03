@@ -4,7 +4,7 @@ module SinatraBabies
       module Helpers
         
         def logged_in?
-          !!session[:user_id]
+          !!session[:user_id] && !User.where(id: session[:user_id]).empty?
         end
 
         def current_user
