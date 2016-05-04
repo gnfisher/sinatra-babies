@@ -11,7 +11,6 @@ Dotenv.load
 
 require 'app/models'
 require 'app/controllers'
-#require 'fix/timezone'
 
 module SinatraBabies
   class App < Sinatra::Base
