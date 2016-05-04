@@ -5,62 +5,65 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-sm-4 text-center">
-    <% if @minutes_slept %>
-      <h4>Time Slept</h4>
-      <h1><%= @minutes_slept / 60 %> <small>hours</small> <%= @minutes_slept % 60 %> <small>minutes</small></h1>
-    <% end %>
+<% if @events %>
+  <div class="row">
+    <div class="col-sm-4 text-center">
+      <% if @events.minutes_slept %>
+        <h4>Time Slept</h4>
+        <h1><%= @events.minutes_slept / 60 %> <small>hours</small> <%= @events.minutes_slept % 60 %> <small>minutes</small></h1>
+      <% end %>
+    </div>
+    <div class="col-sm-4 text-center">
+      <h4>Poops<h4>
+      <h1><%= @events.poops %></h1>
+    </div>
+    <div class="col-sm-4 text-center">
+      <h4 class="<%= "red" if @events.abnormals > 0 %>">Abnormalities</h4>
+      <h1 class="<%= "red" if @events.abnormals > 0 %>"><%= @events.abnormals %></h1>
+    </div>
   </div>
-  <div class="col-sm-4 text-center">
-    <h4>Poops<h4>
-    <h1><%= @poops %></h1>
-  </div>
-  <div class="col-sm-4 text-center">
-    <h4 class="<%= "red" if @abnormals > 0 %>">Abnormalities</h4>
-    <h1 class="<%= "red" if @abnormals > 0 %>"><%= @abnormals %></h1>
-  </div>
-</div>
 
-
-<div class="row">
-  <div class="col-sm-12">
-  <% if @events %>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th class="col-sm-3">Time</th>
-          <th class="col-sm-3">Event</th>
-          <th class="col-sm-2">Description</th>
-          <th class="col-sm-4">Options</th>
-        </tr>
-      </thead>
-      <% @events.each do |event| %>
-        <tr>
-          <td><%= event.time.strftime("%l:%M %P %z") %></td>
-          <td><%= "#{@baby.name} #{event.event_type.name}" %></td>
-          <td><%= print_description(event) %></td>
-          <td>
-            <div class="btn-group">
-              <form class="form-inline" method="POST" action="/babies/<%= @baby.id %>/events/<%= event.id %>">
-                <a href="/babies/<%= @baby.id %>/events/<%= event.id %>/edit"><button type="button" class="btn btn-default">Update</button></a>
-                <input type="hidden" name="_method" value="delete">
-                <input class="btn btn-danger" type="submit" value="Delete">
-              </form>
-            </div>
-          </td>
-        </tr>
-      <% end %> 
-    </table>
-  <% else %>
-    <p>No results.</p>
-  <% end %>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="col-sm-3">Time</th>
+            <th class="col-sm-3">Event</th>
+            <th class="col-sm-2">Description</th>
+            <th class="col-sm-4">Options</th>
+          </tr>
+        </thead>
+        <% @events.each do |event| %>
+          <tr>
+            <td><%= event.time.in_time_zone(@current_user.timezone).strftime("%l:%M %P %z") %></td>
+            <td><%= "#{@baby.name} #{event.event_type.name}" %></td>
+            <td><%= print_description(event) %></td>
+            <td>
+              <div class="btn-group">
+                <form class="form-inline" method="POST" action="/babies/<%= @baby.id %>/events/<%= event.id %>">
+                  <a href="/babies/<%= @baby.id %>/events/<%= event.id %>/edit"><button type="button" class="btn btn-default">Update</button></a>
+                  <input type="hidden" name="_method" value="delete">
+                  <input class="btn btn-danger" type="submit" value="Delete">
+                </form>
+              </div>
+            </td>
+          </tr>
+        <% end %> 
+      </table>
+    </div>
   </div>
-</div>
+<% else %>
+  <div class="row">
+    <div class="col-sm-12">
+      <p>No results.</p>
+    </div>
+  </div>
+<% end %>
 <div class="row">
   <div class="col-sm-12 text-center">
-    <%= erb :_prev_button if @prev_button%>
-    <%= erb :_next_button if @next_button%>
+    <%= erb :_prev_button if !!params[:days_ago] && params[:days_ago] > "0" %>
+    <%= erb :_next_button if @more_pages %>
   </div>
 </div>
 <div class="row">
