@@ -16,6 +16,10 @@ module SinatraBabies
           set_time_zone
         end
       end
+      
+      error ActiveRecord::RecordNotFound do
+        erb :not_found
+      end
 
       helpers Helpers
 
