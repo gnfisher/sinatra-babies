@@ -76,8 +76,7 @@ module SinatraBabies
       end
 
       def self.all_sleep_and_wakes
-        # Reversed so that array starts with the OLDEST event first
-        self.where(event_type_id: 1..2).reverse
+        self.select { |event| event.event_type_id.between? 1, 2 }.reverse
       end
 
       def self.still_sleeping?(last_event)
