@@ -25,6 +25,6 @@ group :test do
   # gem 'pry'
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+  gem 'database_cleaner' #, git: 'https://github.com/bmabey/database_cleaner.git'
 end
 
