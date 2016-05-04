@@ -21,8 +21,9 @@ module SinatraBabies
       end
 
       get '/babies/:id/events/:days_ago' do
-        @events     = @baby.events.days_ago(params[:days_ago].to_i)
-        @more_pages = !@baby.events.days_ago(params[:days_ago].to_i + 1).empty?
+        @events       = @baby.events.days_ago(params[:days_ago].to_i)
+        @more_pages   = !@baby.events.days_ago(params[:days_ago].to_i + 1).empty?
+        @current_date = @events.first.time.strftime("%B %-d")
         
         erb :'events/index'
       end
