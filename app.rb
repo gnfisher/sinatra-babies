@@ -22,7 +22,6 @@ module SinatraBabies
       set :session_secret, 'temp_secret'
 
       ActiveRecord::Base.default_timezone = :utc
-      use ActiveRecord::ConnectionAdapters::ConnectionManagement
     end
 
     use Rack::Static, :urls => ['/css', '/js', '/fonts'], :root => 'public'
