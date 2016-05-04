@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'bundler'
 require 'date'
-require 'pry'
 
 Bundler.require
 $: << File.expand_path('../', __FILE__)
