@@ -6,7 +6,7 @@ gem 'rake'
 gem 'dotenv'
 gem 'bcrypt', '~> 3.1.2'
 gem 'chronic'
-gem 'pry'
+gem 'pg'
 
 # Database
 gem 'activerecord', require: 'active_record'
