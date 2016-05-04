@@ -85,11 +85,11 @@ module SinatraBabies
       end
       
       def self.poops
-        self.where(event_type_id: 4).count
+        self.select { |event| event.event_type_id == 4 }.size
       end
 
       def self.abnormals
-        self.where(event_description_id: 4).count
+        self.select { |event| event.event_description_id == 4}.size
       end
     end
   end
