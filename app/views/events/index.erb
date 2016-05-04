@@ -8,18 +8,15 @@
 <% if @events %>
   <div class="row">
     <div class="col-sm-4 text-center">
-      <% if @events.minutes_slept %>
         <h4>Time Slept</h4>
-        <h1><%= @events.minutes_slept / 60 %> <small>hours</small> <%= @events.minutes_slept % 60 %> <small>minutes</small></h1>
-      <% end %>
+        <%= erb :'events/_minutes_slept', locals: { minutes_slept: @events.minutes_slept } %>
     </div>
     <div class="col-sm-4 text-center">
       <h4>Poops<h4>
       <h1><%= @events.poops %></h1>
     </div>
     <div class="col-sm-4 text-center">
-      <h4 class="<%= "red" if @events.abnormals > 0 %>">Abnormalities</h4>
-      <h1 class="<%= "red" if @events.abnormals > 0 %>"><%= @events.abnormals %></h1>
+      <%= erb :'events/_abnormals', locals: { abnormals: @events.abnormals } %>
     </div>
   </div>
 
@@ -35,20 +32,7 @@
           </tr>
         </thead>
         <% @events.each do |event| %>
-          <tr>
-            <td><%= event.time.in_time_zone(@current_user.timezone).strftime("%l:%M %P %z") %></td>
-            <td><%= "#{@baby.name} #{event.event_type.name}" %></td>
-            <td><%= print_description(event) %></td>
-            <td>
-              <div class="btn-group">
-                <form class="form-inline" method="POST" action="/babies/<%= @baby.id %>/events/<%= event.id %>">
-                  <a href="/babies/<%= @baby.id %>/events/<%= event.id %>/edit"><button type="button" class="btn btn-default">Update</button></a>
-                  <input type="hidden" name="_method" value="delete">
-                  <input class="btn btn-danger" type="submit" value="Delete">
-                </form>
-              </div>
-            </td>
-          </tr>
+          <%= erb :'events/_event', locals: { event: event } %>
         <% end %> 
       </table>
     </div>

@@ -1,0 +1,14 @@
+<tr>
+  <td><%= event.time.in_time_zone(@current_user.timezone).strftime("%l:%M %P %z") %></td>
+  <td><%= "#{@baby.name} #{event.event_type.name}" %></td>
+  <td><%= print_description(event) %></td>
+  <td>
+    <div class="btn-group">
+      <form class="form-inline" method="POST" action="/babies/<%= @baby.id %>/events/<%= event.id %>">
+        <a href="/babies/<%= @baby.id %>/events/<%= event.id %>/edit"><button type="button" class="btn btn-default">Update</button></a>
+        <input type="hidden" name="_method" value="delete">
+        <input class="btn btn-danger" type="submit" value="Delete">
+      </form>
+    </div>
+  </td>
+</tr>
