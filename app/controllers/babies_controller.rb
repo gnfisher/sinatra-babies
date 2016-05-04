@@ -8,23 +8,22 @@ module SinatraBabies
         end
       end
 
-      get '/babies' do
-        @babies = Baby.get_by_parent_id(current_user.id)
-        erb :'babies/index'
-      end
-
       get '/babies/not-your-baby' do
         erb :'babies/not_your_baby'
       end
+      
+      get '/babies' do
+        @babies = @current_user.babies 
+        erb :'babies/index'
+      end
 
       get '/babies/new' do
-        @user = current_user
         erb :'babies/new'
       end
 
       post '/babies' do
         @baby = Baby.new(params[:baby])
-        @baby.user_id = current_user.id
+        @baby.user_id = @current_user.id
         if @baby.save
           redirect "/babies/#{@baby.id}?msg=success"
         else
@@ -33,9 +32,8 @@ module SinatraBabies
       end
 
       get '/babies/:id' do
-        @baby = Baby.find(params[:id]) 
-        if @baby && @baby.parent_id == current_user.id
-          #@message = print_message(params[:msg])
+        @baby = Baby.find(params[:id])
+        if @baby.user_id == @current_user.id
           erb :'babies/show'
         else
           redirect '/babies/not-your-baby'
@@ -44,14 +42,13 @@ module SinatraBabies
 
       delete '/babies/:id/delete' do
         baby = Baby.find(params[:id])
-        if baby.user_id == current_user.id
+        if @baby.user_id == @current_user.id 
           baby.delete
           redirect '/babies'
         else
           redirect '/babies/not-your-baby'
         end
       end
-
     end
   end
 end
