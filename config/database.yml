@@ -4,7 +4,7 @@ production:
   database: ebdb
   username: gregory4209
   password: password
-  host: aag1fjlxgxz3gt.chexux3wan9g.us-west-2.rds.amazonaws.com:5432
+  host: <%= ENV['RDS_HOSTNAME'] %>
   port: 5432
 
 development:
