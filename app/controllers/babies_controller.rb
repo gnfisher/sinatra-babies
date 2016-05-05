@@ -42,7 +42,7 @@ module SinatraBabies
 
       delete '/babies/:id/delete' do
         baby = Baby.find(params[:id])
-        if @baby.user_id == @current_user.id 
+        if baby.user_id == @current_user.id 
           baby.delete
           redirect '/babies'
         else

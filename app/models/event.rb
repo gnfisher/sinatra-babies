@@ -50,6 +50,9 @@ module SinatraBabies
         # If oldest sleep/wake event is the same as the oldest sleep/wake event 
         # of ALL sleep/wake events for this baby, start counter at time of that event
         # else start counting from beginning_of_day
+        #
+        # TODO: Is the call to all_sleep_and_wakes.first behaving as I think it is?
+        #  - Investigate.
         if sleep_wakes.first == all_sleep_and_wakes.first
           seconds_counter = sleep_wakes.first.time
         else
