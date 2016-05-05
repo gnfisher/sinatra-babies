@@ -1,11 +1,11 @@
 production:
   adapter: postgresql
   encoding: unicode
-  database: <%= ENV['RDS_DB_NAME'] %>
-  username: <%= ENV['RDS_USERNAME'] %>
-  password: <%= ENV['RDS_PASSWORD'] %>
-  host: <%= ENV['RDS_HOSTNAME'] %>
-  port: <%= ENV['RDS_PORT'] %>
+  database: ebdb
+  username: gregory4209
+  password: password
+  host: aag1fjlxgxz3gt.chexux3wan9g.us-west-2.rds.amazonaws.com:5432
+  port: 5432
 
 development:
   adapter: sqlite3
