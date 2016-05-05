@@ -1,6 +1,7 @@
 production:
   adapter: postgresql
   encoding: unicode
+  pool: 5
   database: ebdb
   username: gregory4209
   password: password
