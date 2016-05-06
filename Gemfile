@@ -7,7 +7,6 @@ gem 'dotenv'
 gem 'bcrypt', '~> 3.1.2'
 gem 'chronic'
 gem 'pg'
-gem 'puma'
 
 # Database
 gem 'activerecord', require: 'active_record'
@@ -18,14 +17,14 @@ group :development do
   gem 'thin'
   gem 'tux'
   gem 'shotgun'
+  gem 'pry'
 end
 
 group :test do
   gem 'rspec'
   gem 'rack-test'
-  # gem 'pry'
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'database_cleaner' #, git: 'https://github.com/bmabey/database_cleaner.git'
+  gem 'database_cleaner'
 end
 
