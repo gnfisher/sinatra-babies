@@ -24,3 +24,10 @@ How to run locally
 1. `shotgun`
 1. Point your browser to `http://localhost:9393`
 1. You can create a user or login as `sinatra@babies.com` with password `password`
+
+Check out live demo
+---
+
+1. Visit http://sinatra-baby-app-dev.us-east-1.elasticbeanstalk.com
+1. Login with `sinatra@babies.com` with password `password`.
+1. Alternatively, you can create your own account.
