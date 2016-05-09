@@ -31,6 +31,15 @@ module SinatraBabies
         end
       end
 
+      post '/tasks/reseed' do
+        # Check if user-agent matches ENV variable
+        if params[:key] == ENV['SEED_KEY']
+          require 'db/seeds'
+        else
+          500
+        end
+      end
+
     end
   end
 end

@@ -16,7 +16,7 @@ module SinatraBabies
       get '/babies/:id/events' do
         @events     = @baby.events.days_ago(0)
         @more_pages = !@baby.events.days_ago(params[:days_ago].to_i + 1).empty?
-
+        
         erb :'events/index'
       end
 

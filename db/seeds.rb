@@ -1,14 +1,20 @@
-%w(woke\ up fell\ asleep fed pooped puked).each do |type|
-  EventType.create(name: type)
-end
+User.delete_all
+Baby.delete_all
+Event.delete_all
 
-%w(a\ lot normal a\ little abnormal).each do |desc|
-  EventDescription.create(text: desc)
+if EventType.all.empty?
+    %w(woke\ up fell\ asleep fed pooped puked).each do |type|
+    EventType.create(name: type)
+  end
+
+  %w(a\ lot normal a\ little abnormal).each do |desc|
+    EventDescription.create(text: desc)
+  end
 end
 
 # Creating a default scaffold for the application.
 
-dad = User.create(username: "temp_user", email: "sinatra@babies.com", timezone: User.timezones[1], password: "password")
+dad = User.create(username: "temp_user", email: "temp_user", timezone: User.timezones[1], password: "password")
 lucas = Baby.create( name: "Lucas")
 lucas.user = dad
 lucas.save
@@ -21,13 +27,13 @@ Time.zone = User.timezones[1]
   @next_sleep_wake ||= 1
   if i % 2 == 0
     Event.create(
-          baby_id: 1, 
+          baby_id: lucas.id, 
           event_type_id: @next_sleep_wake, 
           time: Chronic.parse('now') - (i * 7200))
     @next_sleep_wake = (@next_sleep_wake == 1 ? 2 : 1)
   else
     Event.create(
-          baby_id: 1, 
+          baby_id: lucas.id, 
           event_type_id: rand(3..5), 
           event_description_id: rand(1..4), 
           time: Chronic.parse('now') - (i * 7200))
