@@ -29,5 +29,7 @@ Check out live demo
 ---
 
 1. Visit http://sinatra-baby-app-dev.us-east-1.elasticbeanstalk.com
-1. Login with `sinatra@babies.com` with password `password`.
+1. Login with `temp_user` with password `password`.
 1. Alternatively, you can create your own account.
+
+**Note** The database gets wiped and reseeded every 6 hours.
